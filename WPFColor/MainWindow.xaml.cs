@@ -20,7 +20,6 @@ namespace WpfApp2
         {
             InitializeComponent();
             view = new();
-          //  colorsList.ItemsSource = view.CList;
             DataContext = view;
         }
 
