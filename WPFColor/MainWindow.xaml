@@ -38,9 +38,9 @@
             </StackPanel>
             <StackPanel Grid.Column="2">
                 <Slider Style="{StaticResource SliderStyle}" Name="alphaSlider" Value="{Binding Path=Alpha, Mode=OneWayToSource}"/>
-                <Slider Style="{StaticResource SliderStyle}" Name="redSlider"   Value="{Binding Path=Red, Mode=OneWayToSource}"/>
+                <Slider Style="{StaticResource SliderStyle}" Name="redSlider"   Value="{Binding Path=Red,   Mode=OneWayToSource}"/>
                 <Slider Style="{StaticResource SliderStyle}" Name="greenSlider" Value="{Binding Path=Green, Mode=OneWayToSource}"/>
-                <Slider Style="{StaticResource SliderStyle}" Name="blueSlider"  Value="{Binding Path=Blue, Mode=OneWayToSource}"/>
+                <Slider Style="{StaticResource SliderStyle}" Name="blueSlider"  Value="{Binding Path=Blue,  Mode=OneWayToSource}"/>
             </StackPanel>
             <Rectangle Name="rect"  Grid.Column="3" Margin="4" Fill="{Binding CurrentColor}" />
         </Grid>

@@ -47,9 +47,9 @@ namespace WpfApp2
             ItemsCount = ColorList.Count;
         }
 
-        public void RemoveHexString(int index)
+        public void RemoveHexString()
         {
-            ColorList.RemoveAt(index);
+            ColorList.RemoveAt(SelectedIndex);
             ItemsCount = ColorList.Count;
         } 
 

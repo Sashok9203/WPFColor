@@ -26,7 +26,7 @@ namespace WpfApp2
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             if ((sender as Button)?.Content.ToString() == "Add") view.AddHexString();
-            else  view.RemoveHexString(colorsList.SelectedIndex);
+            else  view.RemoveHexString();
         }
     }
 
