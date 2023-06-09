@@ -36,7 +36,7 @@ namespace WpfApp2
         [DependsOn("SelectedIndex")]
         public bool IsSelected => ItemsCount != 0 && SelectedIndex >= 0;
 
-        [DependsOn("CurrentColor", "ColorList")]
+        [DependsOn("CurrentColor", "ItemsCount")]
         public bool IsNotColorExist =>  !ColorList.Contains(CurrentColorHex);
 
         public string CurrentColorHex => $"#{(byte)Alpha:X2}{(byte)Red:X2}{(byte)Green:X2}{(byte)Blue:X2}";
