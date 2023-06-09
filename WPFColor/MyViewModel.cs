@@ -14,14 +14,14 @@ namespace WpfApp2
     internal class MyViewModel
     {
 
-        private ObservableCollection<string> ColorList;
+        private readonly ObservableCollection<string> ColorList;
         public IEnumerable<string> CList => ColorList;
         public double Alpha { get; set; }
         public double Red { get; set; }
         public double Green { get; set; }
         public double Blue { get; set; }
         public int SelectedIndex { get; set; }
-        public int ItemsCount { get; set; }
+        public int ItemsCount { get; private set; }
 
 
         public MyViewModel()
@@ -36,7 +36,7 @@ namespace WpfApp2
         [DependsOn("SelectedIndex")]
         public bool IsSelected => ItemsCount != 0 && SelectedIndex >= 0;
 
-        [DependsOn("CurrentColor", "ItemsCount")]
+        [DependsOn("CurrentColor", "ColorList")]
         public bool IsNotColorExist =>  !ColorList.Contains(CurrentColorHex);
 
         public string CurrentColorHex => $"#{(byte)Alpha:X2}{(byte)Red:X2}{(byte)Green:X2}{(byte)Blue:X2}";
