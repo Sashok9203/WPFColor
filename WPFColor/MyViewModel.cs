@@ -52,5 +52,6 @@ namespace WpfApp2
             ColorList.RemoveAt(index);
             ItemsCount = ColorList.Count;
         } 
+
     }
 }

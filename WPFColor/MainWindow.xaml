@@ -48,7 +48,7 @@
             <Button  IsEnabled="{Binding IsNotColorExist}" Content="Add" Click="ButtonClick" Width="60" Margin="0,0,15,0"/>
             <Button  IsEnabled="{Binding IsSelected}" Content="Delete" Click="ButtonClick" Width="60"/>
         </StackPanel>
-        <ListBox  SelectedIndex="{Binding SelectedIndex, Mode = OneWayToSource}" Name="colorsList" Padding="5" Margin="5" DockPanel.Dock="Bottom"/>
+        <ListBox ItemsSource="{Binding CList}" SelectedIndex="{Binding SelectedIndex, Mode = OneWayToSource}" Name="colorsList" Padding="5" Margin="5" DockPanel.Dock="Bottom"/>
     </DockPanel>
     
 </Window>

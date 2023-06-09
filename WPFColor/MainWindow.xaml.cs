@@ -18,11 +18,10 @@ namespace WpfApp2
         MyViewModel view ;
         public MainWindow()
         {
-          
             InitializeComponent();
             view = new();
-            colorsList.ItemsSource = view.CList;
-            this.DataContext = view;
+          //  colorsList.ItemsSource = view.CList;
+            DataContext = view;
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)
