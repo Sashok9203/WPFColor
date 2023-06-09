@@ -34,10 +34,10 @@ namespace WpfApp2
         public SolidColorBrush CurrentColor => new(Color.FromArgb((byte)Alpha, (byte)Red, (byte)Green, (byte)Blue));
 
         [DependsOn("SelectedIndex")]
-        public bool IsSelected =>  SelectedIndex >= 0;
+        public bool IsSelected => ItemsCount != 0 && SelectedIndex >= 0;
 
         [DependsOn("CurrentColor", "ItemsCount")]
-        public bool IsNotColorExist => !ColorList.Contains(CurrentColorHex);
+        public bool IsNotColorExist =>  !ColorList.Contains(CurrentColorHex);
 
         public string CurrentColorHex => $"#{(byte)Alpha:X2}{(byte)Red:X2}{(byte)Green:X2}{(byte)Blue:X2}";
 
