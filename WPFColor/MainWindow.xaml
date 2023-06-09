@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2"
         xmlns:system="clr-namespace:System;assembly=System"
-        d:DataContext="{d:DesignInstance Type=local:MyView}"
+        d:DataContext="{d:DesignInstance Type=local:MyViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="421"  >
     <Window.Resources>
