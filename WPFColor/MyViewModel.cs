@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace WpfApp2
@@ -13,7 +14,8 @@ namespace WpfApp2
     [AddINotifyPropertyChangedInterface]
     internal class MyViewModel
     {
-
+        private RelayCommand addColor;
+        private RelayCommand delColor;
         private readonly ObservableCollection<string> ColorList;
         public IEnumerable<string> CList => ColorList;
         public double Alpha { get; set; }
@@ -21,37 +23,21 @@ namespace WpfApp2
         public double Green { get; set; }
         public double Blue { get; set; }
         public int SelectedIndex { get; set; }
-        public int ItemsCount { get; private set; }
+       
+
+        public ICommand AddColor => addColor;
+        public ICommand DelColor => delColor;
 
 
         public MyViewModel()
         {
             ColorList = new();
             Alpha = Red = Green = Blue = 0;
+            addColor = new((o) => { ColorList.Add(CurrentColor.ToString()); ; }, (o) =>  !ColorList.Contains(CurrentColor.ToString()) );
+            delColor = new((o) => { ColorList.RemoveAt(SelectedIndex);}, (o) =>  SelectedIndex >= 0);
         }
 
         [DependsOn("alpha", "red", "green", "blue")]
         public SolidColorBrush CurrentColor => new(Color.FromArgb((byte)Alpha, (byte)Red, (byte)Green, (byte)Blue));
-
-        [DependsOn("SelectedIndex")]
-        public bool IsSelected => ItemsCount != 0 && SelectedIndex >= 0;
-
-        [DependsOn("CurrentColor", "ItemsCount")]
-        public bool IsNotColorExist =>  !ColorList.Contains(CurrentColorHex);
-
-        public string CurrentColorHex => $"#{(byte)Alpha:X2}{(byte)Red:X2}{(byte)Green:X2}{(byte)Blue:X2}";
-
-        public void AddHexString() 
-        {
-            ColorList.Add(CurrentColorHex);
-            ItemsCount = ColorList.Count;
-        }
-
-        public void RemoveHexString()
-        {
-            ColorList.RemoveAt(SelectedIndex);
-            ItemsCount = ColorList.Count;
-        } 
-
     }
 }

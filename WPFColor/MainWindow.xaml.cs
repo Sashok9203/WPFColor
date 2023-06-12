@@ -15,19 +15,7 @@ namespace WpfApp2
 {
     public partial class MainWindow : Window
     {
-        MyViewModel view ;
-        public MainWindow()
-        {
-            InitializeComponent();
-            view = new();
-            DataContext = view;
-        }
-
-        private void ButtonClick(object sender, RoutedEventArgs e)
-        {
-            if ((sender as Button)?.Content.ToString() == "Add") view.AddHexString();
-            else  view.RemoveHexString();
-        }
+       public MainWindow() { InitializeComponent(); }
     }
 
    
