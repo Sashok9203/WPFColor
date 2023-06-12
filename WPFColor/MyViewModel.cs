@@ -14,8 +14,8 @@ namespace WpfApp2
     [AddINotifyPropertyChangedInterface]
     internal class MyViewModel
     {
-        private RelayCommand addColor;
-        private RelayCommand delColor;
+        private readonly RelayCommand addColor;
+        private readonly RelayCommand delColor;
         private readonly ObservableCollection<string> ColorList;
         public IEnumerable<string> CList => ColorList;
         public double Alpha { get; set; }
@@ -33,7 +33,7 @@ namespace WpfApp2
         {
             ColorList = new();
             Alpha = Red = Green = Blue = 0;
-            addColor = new((o) => { ColorList.Add(CurrentColor.ToString()); ; }, (o) =>  !ColorList.Contains(CurrentColor.ToString()) );
+            addColor = new((o) => { ColorList.Add(CurrentColor.ToString()); ; }, (o) => !ColorList.Contains(CurrentColor.ToString()) );
             delColor = new((o) => { ColorList.RemoveAt(SelectedIndex);}, (o) =>  SelectedIndex >= 0);
         }
 
