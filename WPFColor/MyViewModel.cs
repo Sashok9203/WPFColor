@@ -32,10 +32,7 @@ namespace WpfApp2
 
         [DependsOn("SelectedIndex")]
         public Visibility HelpVisible => SelectedIndex >= 0? Visibility.Visible: Visibility.Hidden;
-        
-
-        
-
+  
         public int SelectedIndex 
         {
             get
@@ -50,23 +47,8 @@ namespace WpfApp2
                 oldIndex = index;
                 return index;
             }
-            set
-            {
-                index = value;
-                //if (index >= 0)
-                //{
-                //    Alpha = ColorList[index].A;
-                //    Red = ColorList[index].R;
-                //    Green = ColorList[index].G;
-                //    Blue = ColorList[index].B;
-                //}
-            }
+            set => index = value;
         }
-
-        
-
-        
-
 
         public ICommand AddColor => addColor;
         public ICommand DelColor => delColor;
@@ -98,8 +80,5 @@ namespace WpfApp2
                 return tmpCColor;
             }
          }
-        
-        
-
     }
 }
