@@ -21,6 +21,9 @@
     <Window.DataContext>
         <local:MyViewModel/>
     </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="Esc" Command="{Binding ClearSelection }"/>
+    </Window.InputBindings>
     
     <DockPanel>
         <Grid DockPanel.Dock="Top">
@@ -47,22 +50,46 @@
             </StackPanel>
             
             <StackPanel Grid.Column="2">
-                <Slider Style="{StaticResource SliderStyle}" Name="alphaSlider" Value="{Binding Path=Alpha, Mode=OneWayToSource}"/>
-                <Slider Style="{StaticResource SliderStyle}" Name="redSlider"   Value="{Binding Path=Red,   Mode=OneWayToSource}"/>
-                <Slider Style="{StaticResource SliderStyle}" Name="greenSlider" Value="{Binding Path=Green, Mode=OneWayToSource}"/>
-                <Slider Style="{StaticResource SliderStyle}" Name="blueSlider"  Value="{Binding Path=Blue,  Mode=OneWayToSource}"/>
+                <Slider Style="{StaticResource SliderStyle}" Name="alphaSlider" Value="{Binding Path=Alpha, Mode=TwoWay}"/>
+                <Slider Style="{StaticResource SliderStyle}" Name="redSlider"   Value="{Binding Path=Red,   Mode=TwoWay}"/>
+                <Slider Style="{StaticResource SliderStyle}" Name="greenSlider" Value="{Binding Path=Green, Mode=TwoWay}"/>
+                <Slider Style="{StaticResource SliderStyle}" Name="blueSlider"  Value="{Binding Path=Blue,  Mode=TwoWay}"/>
             </StackPanel>
-            
-            <Rectangle Name="rect"  Grid.Column="3" Margin="4" Fill="{Binding CurrentColor}" />
+
+            <Border Name="rect"  Grid.Column="3" Margin="4"  >
+                <Border.Background>
+                    <SolidColorBrush Color="{Binding CurrentColor}"/>
+                </Border.Background>
+            </Border>
             
         </Grid>
         
         <StackPanel DockPanel.Dock="Top" Margin="5" Orientation="Horizontal" Height="20">
             <Button Command="{Binding AddColor}" Content="Add"  Width="60" Margin="0,0,15,0"/>
             <Button Command="{Binding DelColor}"  Content="Delete"  Width="60"/>
+            <TextBlock Text="ESC to exit edit mode" VerticalAlignment="Center" FontSize="10" FontWeight="DemiBold" Margin="30,0,0,0" Visibility ="{Binding HelpVisible}"/>
         </StackPanel>
-        
-        <ListBox ItemsSource="{Binding CList}" SelectedIndex="{Binding SelectedIndex, Mode = OneWayToSource}" Name="colorsList" Padding="5" Margin="5" DockPanel.Dock="Bottom"/>
+
+        <ListBox ItemsSource="{Binding CList}" SelectedIndex="{Binding SelectedIndex, Mode =TwoWay}"  Name="colorsList" Padding="5" Margin="5" DockPanel.Dock="Bottom">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel Height="25">
+                        <TextBlock Width="70" Text="{Binding}" DockPanel.Dock="Left"/>
+                        <Border Margin="20,0,10,0">
+                            <Border.Background>
+                                <SolidColorBrush Color="{Binding}"/>
+                            </Border.Background>
+                        </Border>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+       
     </DockPanel>
     
 </Window>
