@@ -69,14 +69,12 @@ namespace WpfApp2
             get
             {
                 tmpCColor = Color.FromArgb((byte)Alpha, (byte)Red, (byte)Green, (byte)Blue);
-
                 if (SelectedIndex >= 0)
                 {
                     int tmp = SelectedIndex;
                     ColorList[SelectedIndex] = tmpCColor;
                     SelectedIndex = tmp;
                 }
-                
                 return tmpCColor;
             }
          }

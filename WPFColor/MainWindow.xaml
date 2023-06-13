@@ -21,6 +21,7 @@
     <Window.DataContext>
         <local:MyViewModel/>
     </Window.DataContext>
+    
     <Window.InputBindings>
         <KeyBinding Key="Esc" Command="{Binding ClearSelection }"/>
     </Window.InputBindings>
@@ -61,23 +62,25 @@
                     <SolidColorBrush Color="{Binding CurrentColor}"/>
                 </Border.Background>
             </Border>
-            
         </Grid>
         
         <StackPanel DockPanel.Dock="Top" Margin="5" Orientation="Horizontal" Height="20">
             <Button Command="{Binding AddColor}" Content="Add"  Width="60" Margin="0,0,15,0"/>
             <Button Command="{Binding DelColor}"  Content="Delete"  Width="60"/>
-            <TextBlock Text="ESC to exit edit mode" VerticalAlignment="Center" FontSize="10" FontWeight="DemiBold" Margin="30,0,0,0" Visibility ="{Binding HelpVisible}"/>
+            <TextBlock Text="Esc to exit edit mode ..." VerticalAlignment="Center" FontSize="12" Margin="30,0,0,0" Visibility ="{Binding HelpVisible}"/>
         </StackPanel>
 
         <ListBox ItemsSource="{Binding CList}" SelectedIndex="{Binding SelectedIndex, Mode =TwoWay}"  Name="colorsList" Padding="5" Margin="5" DockPanel.Dock="Bottom">
+            
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
             </ListBox.ItemContainerStyle>
+            
             <ListBox.ItemTemplate>
                 <DataTemplate>
+                    
                     <DockPanel Height="25">
                         <TextBlock Width="70" Text="{Binding}" DockPanel.Dock="Left"/>
                         <Border Margin="20,0,10,0">
@@ -86,10 +89,11 @@
                             </Border.Background>
                         </Border>
                     </DockPanel>
+                    
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-       
+      
     </DockPanel>
     
 </Window>
